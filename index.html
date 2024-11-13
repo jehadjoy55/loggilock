@@ -3,117 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>প্রিয়তমা চাঁদ</title>
+    <title>প্রিয়তমা মহু</title>
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-
         body {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            background: linear-gradient(to top, #0d0d1d, #1e1e30);
-            font-family: 'Georgia', serif;
-            color: #ffd1dc;
-            padding: 20px;
-            overflow-y: scroll;
             height: 100vh;
-        }
-
-        .music-control {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            background-color: #ff7f7f;
+            font-family: 'Georgia', serif;
             color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-            z-index: 10;
+            background: linear-gradient(to top, #03001e, #30336b);
+            overflow: hidden;
+            position: relative;
+            flex-direction: column;
+            padding: 10px;
         }
-
+        .heart {
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            color: #ff4b6e;
+            animation: float 2s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, -20px); }
+            100% { transform: translate(-50%, 0); }
+        }
         .moon {
-            position: fixed;
-            top: 5%;
+            position: absolute;
+            top: 10%;
             left: 10%;
             width: 120px;
             height: 120px;
-            background: radial-gradient(circle, #ffffff, #d9d9d9 50%);
+            background: radial-gradient(circle, #fff, #d9d9d9 50%);
             border-radius: 50%;
             box-shadow: 0 0 60px rgba(255, 255, 255, 0.5);
         }
-
         .poem-container {
-            position: relative;
+            text-align: center;
             max-width: 600px;
+            padding: 20px;
             background: rgba(0, 0, 0, 0.6);
-            color: #ffd1dc;
-            text-align: left;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            font-family: 'Cursive', serif;
             border-radius: 15px;
             backdrop-filter: blur(5px);
-            padding: 20px;
-            margin-top: 160px;
-            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ffd1dc;
+            animation: fadeIn 2s ease;
         }
-
         .poem-line {
+            display: inline-block;
             opacity: 0;
             transform: translateY(10px);
             animation: fadeLine 1s forwards;
         }
-
-        .poem-line:nth-child(even) { animation-delay: 0.2s; }
-        .poem-line:nth-child(odd) { animation-delay: 0.4s; }
-
+        .poem-line:nth-child(even) { animation-delay: 0.3s; }
+        .poem-line:nth-child(odd) { animation-delay: 0.5s; }
         @keyframes fadeLine {
             0% { opacity: 0; transform: translateY(10px); }
             100% { opacity: 1; transform: translateY(0); }
         }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .music-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ff4b6e;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 20px;
+        }
     </style>
 </head>
 <body>
-    <!-- Music Control Button -->
-    <div class="music-control" onclick="toggleMusic()">🎶 Play/Pause Music</div>
-
-    <!-- Moon Effect -->
+    <button class="music-btn" onclick="toggleMusic()">🎶 Play/Pause Music</button>
     <div class="moon"></div>
 
-    <!-- Poem Container -->
-    <div class="poem-container">
-        <div class="poem-line">রাতের এই নীরব চাঁদনীতে,</div>
-        <div class="poem-line">তোমার আলোয় আমি আচ্ছন্ন হয়ে থাকি।</div>
-        <div class="poem-line">তুমি আমার হৃদয়ের নক্ষত্র,</div>
-        <div class="poem-line">যার মধুর আভায় আমার মন শান্তি খোঁজে।</div>
-        <div class="poem-line">তুমি আমার সকল আকাশ জুড়ে,</div>
-        <div class="poem-line">প্রতি শ্বাসে তোমার ছোঁয়া খুঁজি।</div>
-        <div class="poem-line">তোমার ভালোবাসায় আমি চিরকালীন,</div>
-        <div class="poem-line">চিরন্তন এক প্রেমের গল্প লিখি।</div>
+    <div class="poem-container" id="poem">
+        <div class="poem-line">প্রিয়তমা মহু, তুমি আমার জীবনের আলোকবর্তিকা,</div>
+        <div class="poem-line">তোমার প্রতিটি হাসি আমার হৃদয়কে আনন্দে ভরিয়ে দেয়।</div>
+        <div class="poem-line">তোমার চোখের গভীরতায় আমি অনন্ত ভালোবাসার সাগর খুঁজি।</div>
+        <div class="poem-line">তুমি আমার স্বপ্ন, আমার সকল আশা, আমার প্রতিটি মুহূর্তের পরশ।</div>
+        <div class="poem-line">তোমার স্পর্শে আমার জীবন হয়ে ওঠে এক মোহনীয় গীত,</div>
+        <div class="poem-line">যে গীতে আমি খুঁজে পাই চিরন্তন সুখের আস্বাদ।</div>
     </div>
 
-    <!-- Audio Element -->
-    <audio id="lofiMusic" loop>
+    <div class="heart">❤️</div>
+    <div class="heart" style="animation-delay: 0.3s; left: 45%; font-size: 1.8rem;">💖</div>
+    <div class="heart" style="animation-delay: 0.6s; left: 55%; font-size: 1.2rem;">💕</div>
+
+    <audio id="music" loop>
         <source src="loveu.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
-    <!-- JavaScript for Music Control -->
     <script>
+        const music = document.getElementById("music");
+
         function toggleMusic() {
-            const music = document.getElementById("lofiMusic");
             if (music.paused) {
                 music.play();
             } else {
                 music.pause();
             }
         }
+
+        window.addEventListener('load', () => {
+            // Automatically play music on desktop, but requires user action on mobile
+            if (window.innerWidth > 768) {
+                music.play();
+            }
+        });
     </script>
 </body>
 </html>
