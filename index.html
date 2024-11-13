@@ -83,6 +83,30 @@
             left: 20px;
             color: #f5f0e1;
         }
+
+        /* Play/Pause Button Styling */
+        .play-pause-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #f5f0e1;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .play-pause-btn:hover {
+            background-color: #ff4081;
+            color: #fff;
+        }
+
+        .play-pause-btn:active {
+            background-color: #e31b6d;
+        }
     </style>
 </head>
 <body>
@@ -106,10 +130,13 @@
     </div>
 
     <!-- Background Music -->
-    <audio id="backgroundMusic" loop autoplay>
+    <audio id="backgroundMusic" loop>
         <source src="loveu.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
+
+    <!-- Play/Pause Button -->
+    <button class="play-pause-btn" id="playPauseBtn" onclick="toggleMusic()">Play Music</button>
 
     <!-- Volume Control -->
     <div class="volume-control">
@@ -121,13 +148,25 @@
         // Set up volume control for music
         const backgroundMusic = document.getElementById('backgroundMusic');
         const volumeControl = document.getElementById('volume');
-        
+        const playPauseBtn = document.getElementById('playPauseBtn');
+
         function adjustVolume() {
             backgroundMusic.volume = volumeControl.value;
         }
-        
+
         // Initial volume setup
         backgroundMusic.volume = 0.5;
+
+        // Play/Pause music
+        function toggleMusic() {
+            if (backgroundMusic.paused) {
+                backgroundMusic.play();
+                playPauseBtn.textContent = "Pause Music";
+            } else {
+                backgroundMusic.pause();
+                playPauseBtn.textContent = "Play Music";
+            }
+        }
     </script>
 </body>
 </html>
