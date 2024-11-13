@@ -5,167 +5,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>প্রিয়তমা মাহু</title>
     <style>
-        /* General Styling */
+        /* Basic Reset */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-
+        
         body {
+            font-family: 'Georgia', serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
             min-height: 100vh;
-            background: linear-gradient(to top, #0d0d1d, #1e1e30);
-            font-family: 'Georgia', serif;
-            color: #ffd1dc;
-            overflow-y: auto;
-            position: relative;
+            background: radial-gradient(circle, #000428, #004e92);
+            color: #f5f0e1;
+            overflow-y: scroll;
         }
 
-        /* Star Animation */
+        /* Moon and Stars */
+        .moon {
+            position: absolute;
+            top: 10%;
+            left: 70%;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, #ffffff, #cccccc 60%);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
         .star {
             position: absolute;
+            background: radial-gradient(circle, #ffffff, transparent 70%);
+            border-radius: 50%;
             width: 2px;
             height: 2px;
-            background: #fff;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: twinkle 2s infinite ease-in-out alternate;
+            animation: twinkle 2s infinite alternate;
         }
 
+        /* Positioning Stars Randomly */
+        .star:nth-child(1) { top: 20%; left: 15%; animation-delay: 0.5s; }
+        .star:nth-child(2) { top: 40%; left: 25%; animation-delay: 1s; }
+        .star:nth-child(3) { top: 70%; left: 35%; animation-delay: 1.5s; }
+        .star:nth-child(4) { top: 30%; left: 60%; animation-delay: 0.8s; }
+        .star:nth-child(5) { top: 50%; left: 80%; animation-delay: 0.6s; }
+        
+        /* Star Animation */
         @keyframes twinkle {
-            from { opacity: 0.8; }
-            to { opacity: 0.2; }
+            0% { opacity: 0.5; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.5); }
         }
 
-        /* Heart Animation */
-        .heart {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: #ff69b4;
-            transform: rotate(45deg);
-            animation: float 5s infinite ease-in-out;
-        }
-
-        .heart::before,
-        .heart::after {
-            content: "";
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: #ff69b4;
-            border-radius: 50%;
-        }
-
-        .heart::before { top: -10px; left: 0; }
-        .heart::after { left: 10px; top: 0; }
-
-        @keyframes float {
-            0% { transform: translateY(0) rotate(45deg); opacity: 1; }
-            100% { transform: translateY(-200px) rotate(45deg); opacity: 0; }
-        }
-
-        /* Poem Styling */
+        /* Poem Container */
         .poem-container {
-            margin-top: 50px;
-            max-width: 600px;
+            max-width: 500px;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.6);
-            color: #ffd1dc;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            text-align: center;
             font-size: 1.2rem;
             line-height: 1.8;
-            font-family: 'Cursive', serif;
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
-            text-align: center;
-            animation: fadeIn 3s ease;
+            animation: fadeIn 2s ease;
+            margin-top: 100px;
+            backdrop-filter: blur(4px);
         }
 
         @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* Button Styling */
-        .music-button {
+        /* Volume Control */
+        .volume-control {
             position: fixed;
             top: 20px;
-            right: 20px;
-            padding: 10px 15px;
-            background-color: #ff69b4;
-            color: #fff;
-            font-size: 1rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            z-index: 10;
+            left: 20px;
+            color: #f5f0e1;
         }
     </style>
 </head>
 <body>
-    <!-- Button for Music -->
-    <button class="music-button" onclick="playPause()">🎶 Music</button>
+    <!-- Moon and Stars -->
+    <div class="moon"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
 
-    <!-- Poem Container -->
-    <div class="poem-container" id="poem">
-        <p>মাহু, তুমি আমার আকাশের তারার মেলা,</p>
-        <p>তোমার আলোয় ভরা আমার রাতের খেলা।</p>
-        <p>তুমি আমার হৃদয়ের আকাশে এক চিরন্তন নক্ষত্র,</p>
-        <p>তোমার আলোর মায়ায় বাঁধা আমার প্রত্যেকটা ক্ষণ।</p>
-        <p>তুমি আমার স্বপ্নের বাগানে, ফুলের সুবাস,</p>
-        <p>তোমার স্পর্শে জীবন হয় পরিপূর্ণ আশ্বাস।</p>
-        <p>তোমাকে ভালোবেসে সময়ের নেই কোন সীমা,</p>
-        <p>চিরকাল তুমি আমার প্রিয়তমা মাহু।</p>
+    <!-- Poem Content -->
+    <div class="poem-container">
+        <p>প্রিয়তমা মাহু, তুমি আমার আকাশের উজ্জ্বল চাঁদ,</p>
+        <p>তোমার আলোয় আমার হৃদয় যেন মধুর উষ্ণতায় ভরে ওঠে।</p>
+        <p>রাতের নীরব ক্ষণে, যখন সবাই নিদ্রায়,</p>
+        <p>তুমি আমার স্বপ্নে জাগিয়ে রাখো এক অপূর্ব মায়ায়।</p>
+        <p>আমার সব ব্যথা, সব যন্ত্রণা নিমেষেই বিলীন হয়,</p>
+        <p>তোমার সেই শান্ত, নীরব ভালোবাসার স্পর্শে।</p>
+        <p>তুমি চিরকাল আমার, আমার হৃদয়ের একান্ত অধিকারিণী।</p>
     </div>
 
-    <!-- Stars -->
-    <div class="star" style="top: 10%; left: 20%; animation-duration: 2s;"></div>
-    <div class="star" style="top: 30%; left: 50%; animation-duration: 3s;"></div>
-    <div class="star" style="top: 60%; left: 70%; animation-duration: 2.5s;"></div>
-    <div class="star" style="top: 40%; left: 80%; animation-duration: 3.5s;"></div>
-    <div class="star" style="top: 80%; left: 30%; animation-duration: 1.5s;"></div>
-
-    <!-- Floating Hearts -->
-    <div class="heart" style="top: 70%; left: 40%; animation-duration: 4s;"></div>
-    <div class="heart" style="top: 50%; left: 20%; animation-duration: 5s;"></div>
-    <div class="heart" style="top: 60%; left: 60%; animation-duration: 3s;"></div>
-    <div class="heart" style="top: 90%; left: 10%; animation-duration: 4.5s;"></div>
-
     <!-- Background Music -->
-    <audio id="backgroundMusic" src="loveu.mp3" loop></audio>
+    <audio id="backgroundMusic" loop autoplay>
+        <source src="loveu.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
 
-    <!-- JavaScript for Music Control -->
+    <!-- Volume Control -->
+    <div class="volume-control">
+        <label for="volume">Volume:</label>
+        <input type="range" id="volume" min="0" max="1" step="0.05" value="0.5" onchange="adjustVolume()">
+    </div>
+
     <script>
-        let isPlaying = false;
-        const music = document.getElementById('backgroundMusic');
-
-        function playPause() {
-            if (!isPlaying) {
-                music.volume = 0.3; // Start volume lower
-                music.play();
-                isPlaying = true;
-                increaseVolumeGradually();
-            } else {
-                music.pause();
-                isPlaying = false;
-            }
+        // Set up volume control for music
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const volumeControl = document.getElementById('volume');
+        
+        function adjustVolume() {
+            backgroundMusic.volume = volumeControl.value;
         }
-
-        function increaseVolumeGradually() {
-            let volume = 0.3;
-            const volumeIncrease = setInterval(() => {
-                if (volume < 1) {
-                    volume += 0.05;
-                    music.volume = volume;
-                } else {
-                    clearInterval(volumeIncrease);
-                }
-            }, 500); // Increase volume every 0.5 second
-        }
+        
+        // Initial volume setup
+        backgroundMusic.volume = 0.5;
     </script>
 </body>
 </html>
