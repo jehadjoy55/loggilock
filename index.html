@@ -11,16 +11,18 @@
             margin: 0;
             padding: 0;
         }
-        
+
         body {
             font-family: 'Georgia', serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: radial-gradient(circle, #000428, #004e92);
+            background: radial-gradient(circle, #2f2c55, #1a1a3e);
             color: #f5f0e1;
             overflow-y: scroll;
+            position: relative;
+            text-align: center;
         }
 
         /* Moon and Stars */
@@ -39,8 +41,8 @@
             position: absolute;
             background: radial-gradient(circle, #ffffff, transparent 70%);
             border-radius: 50%;
-            width: 2px;
-            height: 2px;
+            width: 3px;
+            height: 3px;
             animation: twinkle 2s infinite alternate;
         }
 
@@ -50,7 +52,7 @@
         .star:nth-child(3) { top: 70%; left: 35%; animation-delay: 1.5s; }
         .star:nth-child(4) { top: 30%; left: 60%; animation-delay: 0.8s; }
         .star:nth-child(5) { top: 50%; left: 80%; animation-delay: 0.6s; }
-        
+
         /* Star Animation */
         @keyframes twinkle {
             0% { opacity: 0.5; transform: scale(1); }
@@ -60,15 +62,18 @@
         /* Poem Container */
         .poem-container {
             max-width: 500px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 15px;
+            padding: 30px 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
             text-align: center;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             line-height: 1.8;
             animation: fadeIn 2s ease;
             margin-top: 100px;
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(6px);
+            color: #ffe0e0;
+            font-family: 'Dancing Script', cursive;
+            font-weight: bold;
         }
 
         @keyframes fadeIn {
@@ -82,6 +87,7 @@
             top: 20px;
             left: 20px;
             color: #f5f0e1;
+            font-size: 1.1rem;
         }
 
         /* Play/Pause Button Styling */
@@ -89,24 +95,83 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #f5f0e1;
-            color: #333;
+            background-color: #ff69b4;
+            color: #fff;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 1rem;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1.3rem;
             cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .play-pause-btn:hover {
             background-color: #ff4081;
-            color: #fff;
         }
 
         .play-pause-btn:active {
             background-color: #e31b6d;
         }
+
+        .play-pause-btn:focus {
+            outline: none;
+        }
+
+        /* Heart Shape */
+        .heart {
+            font-size: 2rem;
+            color: #ff69b4;
+            animation: heartbeat 1.5s infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Add Custom Romantic Font */
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #ff69b4;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        /* Word Animation */
+        .word {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: appear 1s forwards;
+        }
+
+        .word:nth-child(1) { animation-delay: 0s; }
+        .word:nth-child(2) { animation-delay: 0.5s; }
+        .word:nth-child(3) { animation-delay: 1s; }
+        .word:nth-child(4) { animation-delay: 1.5s; }
+        .word:nth-child(5) { animation-delay: 2s; }
+        .word:nth-child(6) { animation-delay: 2.5s; }
+
+        @keyframes appear {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
     </style>
 </head>
 <body>
@@ -119,14 +184,15 @@
     <div class="star"></div>
 
     <!-- Poem Content -->
-    <div class="poem-container">
-        <p>প্রিয়তমা মাহু, তুমি আমার আকাশের উজ্জ্বল চাঁদ,</p>
-        <p>তোমার আলোয় আমার হৃদয় যেন মধুর উষ্ণতায় ভরে ওঠে।</p>
-        <p>রাতের নীরব ক্ষণে, যখন সবাই নিদ্রায়,</p>
-        <p>তুমি আমার স্বপ্নে জাগিয়ে রাখো এক অপূর্ব মায়ায়।</p>
-        <p>আমার সব ব্যথা, সব যন্ত্রণা নিমেষেই বিলীন হয়,</p>
-        <p>তোমার সেই শান্ত, নীরব ভালোবাসার স্পর্শে।</p>
-        <p>তুমি চিরকাল আমার, আমার হৃদয়ের একান্ত অধিকারিণী।</p>
+    <div class="poem-container" id="poemContainer">
+        <p class="word">প্রিয়তমা মাহু,</p>
+        <p class="word">তুমি আমার আকাশের উজ্জ্বল চাঁদ,</p>
+        <p class="word">তোমার আলোয় আমার হৃদয় যেন মধুর উষ্ণতায় ভরে ওঠে।</p>
+        <p class="word">রাতের নীরব ক্ষণে, যখন সবাই নিদ্রায়,</p>
+        <p class="word">তুমি আমার স্বপ্নে জাগিয়ে রাখো এক অপূর্ব মায়ায়।</p>
+        <p class="word">আমার সব ব্যথা, সব যন্ত্রণা নিমেষেই বিলীন হয়,</p>
+        <p class="word">তোমার সেই শান্ত, নীরব ভালোবাসার স্পর্শে।</p>
+        <p class="word">তুমি চিরকাল আমার, আমার হৃদয়ের একান্ত অধিকারিণী।</p>
     </div>
 
     <!-- Background Music -->
@@ -136,7 +202,10 @@
     </audio>
 
     <!-- Play/Pause Button -->
-    <button class="play-pause-btn" id="playPauseBtn" onclick="toggleMusic()">Play Music</button>
+    <button class="play-pause-btn" id="playPauseBtn" onclick="toggleMusic()">
+        <span id="heart" class="heart">💖</span>
+        Play Music
+    </button>
 
     <!-- Volume Control -->
     <div class="volume-control">
@@ -149,6 +218,7 @@
         const backgroundMusic = document.getElementById('backgroundMusic');
         const volumeControl = document.getElementById('volume');
         const playPauseBtn = document.getElementById('playPauseBtn');
+        const heart = document.getElementById('heart');
 
         function adjustVolume() {
             backgroundMusic.volume = volumeControl.value;
@@ -157,14 +227,14 @@
         // Initial volume setup
         backgroundMusic.volume = 0.5;
 
-        // Play/Pause music
+        // Play/Pause music and change button text to reflect the action
         function toggleMusic() {
             if (backgroundMusic.paused) {
                 backgroundMusic.play();
-                playPauseBtn.textContent = "Pause Music";
+                playPauseBtn.innerHTML = `<span id="heart" class="heart">💖</span> Pause Music`;
             } else {
                 backgroundMusic.pause();
-                playPauseBtn.textContent = "Play Music";
+                playPauseBtn.innerHTML = `<span id="heart" class="heart">💖</span> Play Music`;
             }
         }
     </script>
